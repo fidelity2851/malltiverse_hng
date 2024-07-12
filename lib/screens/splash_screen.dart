@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:malltiverse_hng/screens/products_screen.dart';
+import 'package:malltiverse_hng/screens/home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
       () {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
-            builder: (context) => ProductsScreen(),
+            builder: (context) => const HomeScreen(),
           ),
         );
       },
