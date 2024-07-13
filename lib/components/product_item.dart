@@ -9,8 +9,9 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: (MediaQuery.sizeOf(context).width - constPadding * 2) / 2,
+    return Container(
+      width: (MediaQuery.sizeOf(context).width),
+      margin: const EdgeInsets.only(right: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -59,16 +60,16 @@ class ProductItem extends StatelessWidget {
           OutlinedButton(
             onPressed: () {},
             style: ButtonStyle(
-              padding: MaterialStateProperty.all(
+              padding: WidgetStateProperty.all(
                 const EdgeInsets.symmetric(horizontal: 20),
               ),
-              side: MaterialStateProperty.all(
+              side: WidgetStateProperty.all(
                 const BorderSide(
                   color: constPrimaryColor,
                   width: 1.0,
                 ),
               ),
-              shape: MaterialStateProperty.all(
+              shape: WidgetStateProperty.all(
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(14),
                 ),

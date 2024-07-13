@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:malltiverse_hng/components/product_item.dart';
+import 'package:malltiverse_hng/components/bottom_nav.dart';
+import 'package:malltiverse_hng/components/category_with_products.dart';
 import 'package:malltiverse_hng/utility/constant.dart';
 
 class HomeScreen extends ConsumerWidget {
@@ -20,7 +21,7 @@ class HomeScreen extends ConsumerWidget {
         ),
         leadingWidth: 120,
         titleTextStyle: GoogleFonts.montserrat(
-          color: Colors.black,
+          color: constBlackColor,
           fontSize: 25,
           fontWeight: FontWeight.w600,
         ),
@@ -59,7 +60,7 @@ class HomeScreen extends ConsumerWidget {
                           Text(
                             'Premium Sound, \nPremium Savings',
                             style: GoogleFonts.montserrat(
-                                color: Colors.white,
+                                color: constWhiteColor,
                                 fontSize: 20,
                                 fontWeight: FontWeight.w600),
                           ),
@@ -67,7 +68,7 @@ class HomeScreen extends ConsumerWidget {
                           Text(
                             'Limited offer, hope on and get yours now',
                             style: GoogleFonts.montserrat(
-                                color: Colors.white,
+                                color: constWhiteColor,
                                 fontSize: 12,
                                 fontWeight: FontWeight.w500),
                           ),
@@ -82,35 +83,32 @@ class HomeScreen extends ConsumerWidget {
             const SizedBox(height: 30),
 
             // Category Name With Products
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: constPadding),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Tech Gadget',
-                    style: GoogleFonts.montserrat(
-                      color: constBlackColor,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  Container(
-                    height: 300,
-                    child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 5,
-                        itemBuilder: (context, index) {
-                          return const ProductItem();
-                        }),
-                  ),
-                ],
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: constPadding),
+              child: CategoryWithProducts(
+                title: "Tech Gadget",
               ),
-            )
+            ),
+            const SizedBox(height: 30),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: constPadding),
+              child: CategoryWithProducts(
+                title: "Men Fashion",
+              ),
+            ),
+            const SizedBox(height: 30),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: constPadding),
+              child: CategoryWithProducts(
+                title: "Women's Fashion",
+              ),
+            ),
           ],
         ),
       ),
+
+      // Custom Button Navigation
+      bottomNavigationBar: const BottomNav(),
     );
   }
 }
