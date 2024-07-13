@@ -285,7 +285,7 @@ class PaymentScreen extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: CustomButton(
                   title: 'Make Payment',
-                  url: '/checkout',
+                  url: '/successful_screen',
                 ),
               ),
             ],
