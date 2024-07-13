@@ -25,9 +25,9 @@ class HomeScreen extends ConsumerWidget {
           fontSize: 25,
           fontWeight: FontWeight.w600,
         ),
-        backgroundColor: const Color(0xFAFAFAFA),
+        backgroundColor: constWhiteColor,
       ),
-      
+
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

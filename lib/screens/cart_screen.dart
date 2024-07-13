@@ -23,7 +23,7 @@ class CartScreen extends StatelessWidget {
           fontSize: 25,
           fontWeight: FontWeight.w600,
         ),
-        backgroundColor: const Color(0xFAFAFAFA),
+        backgroundColor: constWhiteColor,
       ),
 
       body: Center(
