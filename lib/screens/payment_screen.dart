@@ -14,7 +14,12 @@ class PaymentScreen extends StatelessWidget {
         centerTitle: false,
         elevation: 0,
         title: const Text('Payment'),
-        leading: const Image(image: AssetImage('assets/images/arrow-left.png')),
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: const Image(image: AssetImage('assets/images/arrow-left.png')),
+        ),
         titleTextStyle: GoogleFonts.montserrat(
           color: constBlackColor,
           fontSize: 25,
@@ -30,13 +35,115 @@ class PaymentScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
+                width: double.infinity,
                 height: 220,
                 decoration: BoxDecoration(
                   color: constBlackColor.withOpacity(0.9),
                   borderRadius: BorderRadius.circular(10),
                 ),
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    const Positioned(
+                      top: 0,
+                      right: 50,
+                      child: Image(
+                          image: AssetImage('assets/images/ellipse1.png')),
+                    ),
+                    const Positioned(
+                      top: 0,
+                      right: 0,
+                      child: Image(
+                          image: AssetImage('assets/images/ellipse2.png')),
+                    ),
+                    Positioned(
+                      top: 20,
+                      right: 20,
+                      child: Text(
+                        'VISA',
+                        style: GoogleFonts.montserrat(
+                          color: constWhiteColor,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      right: 0,
+                      left: 0,
+                      child: Container(
+                        padding: const EdgeInsets.all(20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '5047 1245 7689 2345',
+                              style: GoogleFonts.montserrat(
+                                color: constWhiteColor,
+                                fontSize: 22,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            const SizedBox(height: 15),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Card holder name',
+                                      style: GoogleFonts.montserrat(
+                                        color: constWhiteColor,
+                                        fontSize: 11,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                    Text(
+                                      'Hafsat Ardo',
+                                      style: GoogleFonts.montserrat(
+                                        color: constWhiteColor,
+                                        fontSize: 11,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Card holder name',
+                                      style: GoogleFonts.montserrat(
+                                        color: constWhiteColor,
+                                        fontSize: 11,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                    Text(
+                                      '02/30',
+                                      style: GoogleFonts.montserrat(
+                                        color: constWhiteColor,
+                                        fontSize: 11,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const Image(
+                                  image: AssetImage('assets/images/chip.png'),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 30),
               Text(
                 'Card Number',
                 style: GoogleFonts.montserrat(
