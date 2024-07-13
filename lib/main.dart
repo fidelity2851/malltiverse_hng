@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:malltiverse_hng/screens/cart_screen.dart';
+import 'package:malltiverse_hng/screens/checkout_screen.dart';
 import 'package:malltiverse_hng/screens/home_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:malltiverse_hng/screens/shopping_cart_screen.dart';
@@ -30,6 +31,8 @@ class MyApp extends StatelessWidget {
         '/': (context) => const HomeScreen(),
         '/cart': (context) => const CartScreen(),
         '/shopping-cart': (context) => const ShoppingCartScreen(),
+        '/checkout': (context) => const CheckoutScreen(),
+        '/payment': (context) => const CheckoutScreen(),
       },
     );
   }

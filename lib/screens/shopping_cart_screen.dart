@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:malltiverse_hng/components/bottom_nav.dart';
 import 'package:malltiverse_hng/components/cart_item.dart';
+import 'package:malltiverse_hng/components/custom_button.dart';
 import 'package:malltiverse_hng/utility/constant.dart';
 
 class ShoppingCartScreen extends StatelessWidget {
@@ -202,28 +203,11 @@ class ShoppingCartScreen extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 30),
-                    ElevatedButton(
-                      onPressed: () {},
-                      style: ButtonStyle(
-                        minimumSize: WidgetStateProperty.all(
-                          Size.fromHeight(50),
-                        ),
-                        backgroundColor: WidgetStateProperty.all(
-                          constPrimaryColor,
-                        ),
-                        shape: WidgetStateProperty.all(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                      ),
-                      child: Text(
-                        'Checkout',
-                        style: GoogleFonts.montserrat(
-                          color: constBlackColor,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                        ),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: CustomButton(
+                        title: 'Checkout',
+                        url: '/checkout',
                       ),
                     ),
                   ],
