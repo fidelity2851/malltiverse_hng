@@ -1,12 +1,12 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:malltiverse_hng/utility/constant.dart';
 
 class BottomNav extends StatelessWidget {
+  final int pageIndex;
   const BottomNav({
     super.key,
+    required this.pageIndex,
   });
 
   @override
@@ -24,38 +24,44 @@ class BottomNav extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, '/');
+              },
               child: Container(
                 width: 40,
                 height: 40,
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: true ? constPrimaryColor : Colors.transparent,
+                  color:
+                      pageIndex == 1 ? constPrimaryColor : Colors.transparent,
                   borderRadius: BorderRadius.circular(100),
                 ),
                 child: SvgPicture.asset(
                   'assets/images/home.svg',
-                  colorFilter: const ColorFilter.mode(
-                    true ? constBlackColor : constWhiteColor,
+                  colorFilter: ColorFilter.mode(
+                    pageIndex == 1 ? constBlackColor : constWhiteColor,
                     BlendMode.srcIn,
                   ),
                 ),
               ),
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, '/cart');
+              },
               child: Container(
                 width: 40,
                 height: 40,
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: false ? constPrimaryColor : Colors.transparent,
+                  color:
+                      pageIndex == 2 ? constPrimaryColor : Colors.transparent,
                   borderRadius: BorderRadius.circular(100),
                 ),
                 child: SvgPicture.asset(
                   'assets/images/cart.svg',
-                  colorFilter: const ColorFilter.mode(
-                    false ? constBlackColor : constWhiteColor,
+                  colorFilter: ColorFilter.mode(
+                    pageIndex == 2 ? constBlackColor : constWhiteColor,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -68,13 +74,14 @@ class BottomNav extends StatelessWidget {
                 height: 40,
                 padding: const EdgeInsets.all(4),
                 decoration: BoxDecoration(
-                  color: false ? constPrimaryColor : Colors.transparent,
+                  color:
+                      pageIndex == 3 ? constPrimaryColor : Colors.transparent,
                   borderRadius: BorderRadius.circular(100),
                 ),
                 child: SvgPicture.asset(
                   'assets/images/shopping-cart.svg',
-                  colorFilter: const ColorFilter.mode(
-                    false ? constBlackColor : constWhiteColor,
+                  colorFilter: ColorFilter.mode(
+                    pageIndex == 3 ? constBlackColor : constWhiteColor,
                     BlendMode.srcIn,
                   ),
                 ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:malltiverse_hng/screens/splash_screen.dart';
+import 'package:malltiverse_hng/screens/cart_screen.dart';
+import 'package:malltiverse_hng/screens/home_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
@@ -23,7 +24,11 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const SplashScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const HomeScreen(),
+        '/cart': (context) => const CartScreen(),
+      },
     );
   }
 }

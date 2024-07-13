@@ -27,6 +27,7 @@ class HomeScreen extends ConsumerWidget {
         ),
         backgroundColor: const Color(0xFAFAFAFA),
       ),
+      
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -108,7 +109,7 @@ class HomeScreen extends ConsumerWidget {
       ),
 
       // Custom Button Navigation
-      bottomNavigationBar: const BottomNav(),
+      bottomNavigationBar: const BottomNav(pageIndex: 1),
     );
   }
 }
