@@ -12,7 +12,7 @@ class CartScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         elevation: 0,
-        title: const Text('Product List'),
+        title: const Text('My Cart'),
         leading: const Padding(
           padding: EdgeInsets.only(left: 15),
           child: Image(image: AssetImage('assets/images/logo.png')),

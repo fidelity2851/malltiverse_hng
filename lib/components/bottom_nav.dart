@@ -68,7 +68,9 @@ class BottomNav extends StatelessWidget {
               ),
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, '/shopping-cart');
+              },
               child: Container(
                 width: 40,
                 height: 40,
