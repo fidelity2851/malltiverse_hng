@@ -39,7 +39,6 @@ dependencies:
   flutter_riverpod: ^2.5.1
   http: ^1.2.1
   flutter_svg: ^2.0.10+1
-  flutter_carousel_widget: ^2.2.0
 
 dev_dependencies:
   flutter_test:

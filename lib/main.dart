@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/payment',
+      initialRoute: '/',
       routes: {
         '/': (context) => const HomeScreen(),
         '/cart': (context) => const CartScreen(),

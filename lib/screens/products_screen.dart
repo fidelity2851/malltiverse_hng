@@ -13,6 +13,7 @@ class ProductsScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Timbu Api'),
+          surfaceTintColor: Colors.transparent,
         centerTitle: true,
         titleTextStyle: GoogleFonts.poppins(
           color: Colors.amber,

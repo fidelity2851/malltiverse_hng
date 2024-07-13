@@ -18,6 +18,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+          surfaceTintColor: Colors.transparent,
         centerTitle: true,
         elevation: 0,
         title: const Text('Checkout'),

@@ -4,14 +4,18 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:malltiverse_hng/components/bottom_nav.dart';
 import 'package:malltiverse_hng/components/category_with_products.dart';
 import 'package:malltiverse_hng/utility/constant.dart';
+import 'package:malltiverse_hng/viewmodel/products_controller.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final products = ref.watch(productProvider);
+
     return Scaffold(
       appBar: AppBar(
+        surfaceTintColor: Colors.transparent,
         centerTitle: true,
         elevation: 0,
         title: const Text('Product List'),
@@ -84,26 +88,24 @@ class HomeScreen extends ConsumerWidget {
             const SizedBox(height: 30),
 
             // Category Name With Products
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: constPadding),
-              child: CategoryWithProducts(
-                title: "Tech Gadget",
-              ),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: constPadding),
+              child: products.when(data: (data) {
+                return const CategoryWithProducts(
+                  title: "Men Fashion",
+                );
+              }, error: (error, stackTrace) {
+                return Text(error.toString());
+              }, loading: () {
+                return Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.green[600],
+                  ),
+                );
+              }),
             ),
             const SizedBox(height: 30),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: constPadding),
-              child: CategoryWithProducts(
-                title: "Men Fashion",
-              ),
-            ),
-            const SizedBox(height: 30),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: constPadding),
-              child: CategoryWithProducts(
-                title: "Women's Fashion",
-              ),
-            ),
           ],
         ),
       ),
