@@ -92,9 +92,15 @@ class HomeScreen extends ConsumerWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: constPadding),
               child: products.when(data: (data) {
-                return const CategoryWithProducts(
-                  title: "Men Fashion",
-                );
+                return ListView.builder(
+                    itemCount: data.length,
+                    shrinkWrap: true,
+                    physics: const ScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return CategoryWithProducts(
+                        products: data[index],
+                      );
+                    });
               }, error: (error, stackTrace) {
                 return Text(error.toString());
               }, loading: () {

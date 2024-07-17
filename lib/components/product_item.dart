@@ -9,9 +9,8 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.sizeOf(context).width / 2,
-      margin: const EdgeInsets.only(right: 20),
+    return SizedBox(
+      width: (MediaQuery.sizeOf(context).width - 60) / 2,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -20,7 +19,7 @@ class ProductItem extends StatelessWidget {
             width: double.infinity,
             child: const Image(
               image: AssetImage('assets/images/product1.png'),
-              height: 184,
+              height: 174,
             ),
           ),
           const SizedBox(height: 15),
