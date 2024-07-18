@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:malltiverse_hng/cart_provider.dart';
+import 'package:malltiverse_hng/models/cart.dart';
 import 'package:malltiverse_hng/utility/constant.dart';
 
-class CartItem extends StatelessWidget {
+class CartItem extends ConsumerWidget {
+  final Cart cartItem;
   const CartItem({
     super.key,
+    required this.cartItem,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final cartAction = ref.read(cartProvider.notifier);
     return Container(
       height: 138,
       margin: const EdgeInsets.only(bottom: 20),
@@ -23,9 +29,11 @@ class CartItem extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Image(
-            image: AssetImage('assets/images/product1.png'),
-            height: 70,
+          Image(
+            image: NetworkImage(cartItem.product.images[0]),
+            width: 100,
+            height: 100,
+            fit: BoxFit.cover,
           ),
           const SizedBox(width: 10),
           Expanded(
@@ -34,7 +42,7 @@ class CartItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Ladies Leather Chic Bag',
+                  cartItem.product.name,
                   style: GoogleFonts.montserrat(
                       color: constBlackColor,
                       fontSize: 14,
@@ -42,8 +50,9 @@ class CartItem extends StatelessWidget {
                 ),
                 const SizedBox(height: 5),
                 Text(
-                  'Office Trendy Handbag Brown dsfw er',
+                  cartItem.product.desciption,
                   softWrap: true,
+                  overflow: TextOverflow.ellipsis,
                   style: GoogleFonts.montserrat(
                     color: constBlackColor,
                     fontSize: 12,
@@ -52,12 +61,15 @@ class CartItem extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 const Spacer(),
+                // Increamentals
                 SizedBox(
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          cartAction.decreamentQuatity(cartItem);
+                        },
                         child: Container(
                           width: 30,
                           height: 30,
@@ -79,7 +91,7 @@ class CartItem extends StatelessWidget {
                       ),
                       const SizedBox(width: 20),
                       Text(
-                        '1',
+                        '${cartItem.quantity}',
                         style: GoogleFonts.montserrat(
                           color: constBlackColor,
                           fontSize: 14,
@@ -88,7 +100,9 @@ class CartItem extends StatelessWidget {
                       ),
                       const SizedBox(width: 20),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          cartAction.increamentQuatity(cartItem);
+                        },
                         child: Container(
                           width: 30,
                           height: 30,
@@ -117,21 +131,25 @@ class CartItem extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              SvgPicture.asset(
-                'assets/images/trash.svg',
-                height: 20,
-                colorFilter: ColorFilter.mode(
-                  constBlackColor.withOpacity(0.5),
-                  BlendMode.srcIn,
+              GestureDetector(
+                onTap: () => cartAction.removeFromCart(cartItem.uid),
+                child: SvgPicture.asset(
+                  'assets/images/trash.svg',
+                  height: 20,
+                  colorFilter: ColorFilter.mode(
+                    constBlackColor.withOpacity(0.5),
+                    BlendMode.srcIn,
+                  ),
                 ),
               ),
               const Spacer(),
               Text(
-                'N 20,950',
+                'N ${cartItem.tPrice()}',
                 style: GoogleFonts.montserrat(
-                    color: constBlackColor,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600),
+                  color: constBlackColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ],
           ),

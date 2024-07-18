@@ -41,11 +41,24 @@ class _CategoryWithProductsState extends State<CategoryWithProducts> {
             child: PageView.builder(
               padEnds: false,
               controller: _pageViewController,
-              itemCount: 5,
+              itemCount: (widget.products['products'].length / 2).ceil(),
               onPageChanged: (i) => setState(() => _currentPage = i),
               itemBuilder: (context, index) {
-                return const Row(
-                  children: [ProductItem(), SizedBox(width: 20), ProductItem()],
+                final firstIndex = index * 2;
+                final product1 = widget.products['products'][firstIndex];
+                final product2 =
+                    firstIndex + 1 < widget.products['products'].length
+                        ? widget.products['products'][firstIndex + 1]
+                        : null;
+                return Row(
+                  children: [
+                    ProductItem(product: product1),
+                    const SizedBox(width: 20),
+                    if (product2 != null) ...[
+                      ProductItem(product: product2),
+                      const SizedBox(width: 20),
+                    ],
+                  ],
                 );
               },
             ),
@@ -54,12 +67,14 @@ class _CategoryWithProductsState extends State<CategoryWithProducts> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              for (var i = 0; i < 5; i++) ...[
+              for (var i = 0;
+                  i < (widget.products['products'].length / 2).ceil();
+                  i++) ...[
                 CurrentItemIndicator(isCurrentPage: _currentPage == i),
                 const SizedBox(width: 13.0),
               ],
             ],
-          )
+          ),
         ],
       ),
     );

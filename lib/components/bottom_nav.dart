@@ -59,7 +59,7 @@ class BottomNav extends StatelessWidget {
                   borderRadius: BorderRadius.circular(100),
                 ),
                 child: SvgPicture.asset(
-                  'assets/images/cart.svg',
+                  'assets/images/star.svg',
                   colorFilter: ColorFilter.mode(
                     pageIndex == 2 ? constBlackColor : constWhiteColor,
                     BlendMode.srcIn,

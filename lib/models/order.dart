@@ -10,10 +10,10 @@ class Order {
   });
 
   factory Order.fromJson(Map<String, dynamic> json) {
-    final category_name = json['categories'].length > 0
+    final categoryName = json['categories'].length > 0
         ? json['categories'][0]['name']
         : 'Others';
 
-    return Order(name: category_name, products: []);
+    return Order(name: categoryName, products: []);
   }
 }

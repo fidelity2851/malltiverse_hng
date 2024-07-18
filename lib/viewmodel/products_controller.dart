@@ -34,8 +34,8 @@ class ProductController {
 
       json.map((productJson) {
         final cateName = productJson['categories'].length > 0
-            ? productJson['categories'][0]['name']
-            : 'Others';
+            ? (productJson['categories'][0]['name']).toString().toUpperCase()
+            : 'OTHERS';
         final category = {
           'name': cateName,
           'products': [

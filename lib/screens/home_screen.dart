@@ -90,7 +90,7 @@ class HomeScreen extends ConsumerWidget {
             // Category Name With Products
 
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: constPadding),
+              padding: const EdgeInsets.only(left: constPadding),
               child: products.when(data: (data) {
                 return ListView.builder(
                     itemCount: data.length,
