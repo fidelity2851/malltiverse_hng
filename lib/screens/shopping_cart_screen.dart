@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:malltiverse_hng/cart_provider.dart';
+import 'package:malltiverse_hng/providers/cart_provider.dart';
 import 'package:malltiverse_hng/components/bottom_nav.dart';
 import 'package:malltiverse_hng/components/cart_item.dart';
 import 'package:malltiverse_hng/components/custom_button.dart';
@@ -40,6 +40,7 @@ class ShoppingCartScreen extends ConsumerWidget {
                   children: [
                     ListView.builder(
                       shrinkWrap: true,
+                      reverse: true,
                       physics: const ScrollPhysics(),
                       itemCount: cart.length,
                       itemBuilder: (context, index) {

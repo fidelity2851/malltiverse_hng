@@ -27,4 +27,18 @@ class Product {
           .toList(),
     );
   }
+
+  // Create a Product from a Map
+  factory Product.fromMap(Map<String, dynamic> map) {
+    return Product(
+      uid: map['id'],
+      name: map['name'],
+      desciption: map['description'] ?? 'No description',
+      stock: (map['available_quantity']).toInt(),
+      price: (map['current_price'][0]['NGN'][0]).toInt(),
+      images: (map['photos'] as List)
+          .map((photo) => 'https://api.timbu.cloud/images/${photo['url']}')
+          .toList(),
+    );
+  }
 }
