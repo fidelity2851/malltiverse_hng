@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:malltiverse_hng/screens/order_details_screen.dart';
+import 'package:malltiverse_hng/models/cart.dart';
+import 'package:malltiverse_hng/models/order.dart';
+import 'package:malltiverse_hng/models/product.dart';
 import 'package:malltiverse_hng/screens/order_screen.dart';
 import 'package:malltiverse_hng/screens/wishlist_screen.dart';
 import 'package:malltiverse_hng/screens/checkout_screen.dart';
@@ -15,6 +17,10 @@ void main() async {
 
 // Initialise Hive
   await Hive.initFlutter();
+
+  Hive.registerAdapter(ProductAdapter());
+  Hive.registerAdapter(OrderAdapter());
+  Hive.registerAdapter(CartAdapter());
 
 
   runApp(
@@ -42,7 +48,6 @@ class MyApp extends StatelessWidget {
         '/': (context) => const HomeScreen(),
         '/cart': (context) => const WishlistScreen(),
         '/orders': (context) => const OrderScreen(),
-        '/order_details': (context) => const OrderDetailsScreen(),
         '/shopping-cart': (context) => const ShoppingCartScreen(),
         '/checkout': (context) => const CheckoutScreen(),
         '/payment': (context) => const PaymentScreen(),

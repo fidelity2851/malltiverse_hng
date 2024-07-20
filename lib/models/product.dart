@@ -1,9 +1,18 @@
+import 'package:hive_flutter/adapters.dart';
+part 'product.g.dart';
+@HiveType(typeId: 1)
 class Product {
+  @HiveField(0)
   String uid;
+  @HiveField(1)
   String name;
+  @HiveField(2)
   String desciption;
+  @HiveField(3)
   int stock;
+  @HiveField(4)
   int price;
+  @HiveField(5)
   List<String> images;
 
   Product({

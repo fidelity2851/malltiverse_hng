@@ -10,7 +10,7 @@ class SuccessfulScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          surfaceTintColor: Colors.transparent,
+        surfaceTintColor: Colors.transparent,
         centerTitle: true,
         elevation: 0,
         leading: const Padding(

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:malltiverse_hng/models/order.dart';
 import 'package:malltiverse_hng/providers/cart_provider.dart';
 import 'package:malltiverse_hng/components/bottom_nav.dart';
 import 'package:malltiverse_hng/components/cart_item.dart';
-import 'package:malltiverse_hng/components/custom_button.dart';
+import 'package:malltiverse_hng/providers/current_order_provider.dart';
 import 'package:malltiverse_hng/utility/constant.dart';
 
 class ShoppingCartScreen extends ConsumerWidget {
@@ -13,6 +15,7 @@ class ShoppingCartScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final cart = ref.watch(cartProvider);
+    final orderAction = ref.watch(currentOrderProvider.notifier);
     return Scaffold(
       appBar: AppBar(
         surfaceTintColor: Colors.transparent,
@@ -23,6 +26,25 @@ class ShoppingCartScreen extends ConsumerWidget {
           padding: EdgeInsets.only(left: 15),
           child: Image(image: AssetImage('assets/images/logo.png')),
         ),
+        actions: [
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, '/orders');
+            },
+            child: SizedBox(
+              width: 30,
+              height: 30,
+              child: SvgPicture.asset(
+                'assets/images/order.svg',
+                colorFilter: const ColorFilter.mode(
+                  constPrimaryColor,
+                  BlendMode.srcIn,
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(width: 20),
+        ],
         leadingWidth: 120,
         titleTextStyle: GoogleFonts.montserrat(
           color: constBlackColor,
@@ -218,11 +240,42 @@ class ShoppingCartScreen extends ConsumerWidget {
                             ],
                           ),
                           const SizedBox(height: 30),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 20),
-                            child: CustomButton(
-                              title: 'Checkout',
-                              url: '/checkout',
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: ElevatedButton(
+                              onPressed: () {
+                                orderAction.addOrder(
+                                  Order(
+                                    uid: orderAction.generateUniqueId(),
+                                    products: cart,
+                                    totalAmount: ref
+                                        .read(cartProvider.notifier)
+                                        .getTotalAmount(),
+                                  ),
+                                );
+                                Navigator.pushNamed(context, '/checkout');
+                              },
+                              style: ButtonStyle(
+                                minimumSize: WidgetStateProperty.all(
+                                  const Size.fromHeight(50),
+                                ),
+                                backgroundColor: WidgetStateProperty.all(
+                                  constPrimaryColor,
+                                ),
+                                shape: WidgetStateProperty.all(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                ),
+                              ),
+                              child: Text(
+                                'Checkout',
+                                style: GoogleFonts.montserrat(
+                                  color: constBlackColor,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
                             ),
                           ),
                         ],

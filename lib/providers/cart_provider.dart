@@ -57,6 +57,10 @@ class CartNotifer extends StateNotifier<List<Cart>> {
     // Remove the Cart Item with the uid
     state.removeWhere((item) => item.uid == uid);
   }
+
+  void clearCart() {
+    state = [];
+  }
 }
 
 final cartProvider = StateNotifierProvider<CartNotifer, List<Cart>>((ref) {
