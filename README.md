@@ -6,6 +6,12 @@ This Flutter application is designed to integrate with the Timbu API to retrieve
 
 - Fetches product data from the Timbu API.
 - Displays a list of products with images, names, descriptions, and available quantities.
+- Have at least 20 Unique Products in your product list. They should be categorized.
+- Implement the feature of adding and removing products, wishlist or bookmark, checkout of order e.t.c based on your timbu shop design.
+- Good shopping experience from start to the completion of an order.
+- Create an Orders history screen i.e showing all the completed orders made on your timbu shop. Add an icon on your home screen top bar that navigates to the order history screen. Come up with the design if not available.
+- The Orders history item when clicked must go to a details screen of that order and show details of that order.
+- The items in the order history screen and details should be cached in a database.
 - Implements proper mobile architecture with state management.
 - Ensures a user-friendly and intuitive UI.
 
@@ -13,15 +19,19 @@ This Flutter application is designed to integrate with the Timbu API to retrieve
 
 ### Splash Screen
 
-![Splash Screen](./assets/screen1.png)
+![Splash Screen](./assets/images/screen1.png)
 
 ### Products Screen
 
-![Product Screen](./assets/screen2.png)
+![Product Screen](./assets/images/screen2.png)
 
 ### Product Details Screen
 
-![Product Details Screen](./assets/screen3.png)
+![Product Details Screen](./assets/images/screen3.png)
+
+### Order History Screen
+
+![Order History Screen](./assets/images/screen4.png)
 
 ## Setup Instructions
 
@@ -44,7 +54,7 @@ This Flutter application is designed to integrate with the Timbu API to retrieve
 
 ### Demo
 
-A virtualized demonstration of the app is available on [Appetize.io](https://appetize.io/app/b_ifa3boeyf2mqwapnxnuwobpxjm)
+A virtualized demonstration of the app is available on [Appetize.io](https://appetize.io/app/b_mhxogqkgxhfsgv3xuiwe3uwbwa)
 
 ### License
 
