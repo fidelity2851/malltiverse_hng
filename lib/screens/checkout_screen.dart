@@ -37,11 +37,12 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
         centerTitle: true,
         elevation: 0,
         title: const Text('Checkout'),
-        leading: const Padding(
-          padding: EdgeInsets.only(left: 15),
-          child: Image(image: AssetImage('assets/images/logo.png')),
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: const Image(image: AssetImage('assets/images/arrow-left.png')),
         ),
-        leadingWidth: 120,
         titleTextStyle: GoogleFonts.montserrat(
           color: constBlackColor,
           fontSize: 25,
@@ -206,6 +207,8 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter your number';
+                          } else if (value.length > 11 || value.length < 11) {
+                            return 'number must be 11 values';
                           }
                           return null;
                         },

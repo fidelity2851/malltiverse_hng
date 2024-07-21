@@ -19,9 +19,11 @@ class OrderScreen extends ConsumerWidget {
         centerTitle: true,
         elevation: 0,
         title: const Text('Order History'),
-        leading: const Padding(
-          padding: EdgeInsets.only(left: 15),
-          child: Image(image: AssetImage('assets/images/logo.png')),
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: const Image(image: AssetImage('assets/images/arrow-left.png')),
         ),
         actions: [
           GestureDetector(
@@ -42,7 +44,6 @@ class OrderScreen extends ConsumerWidget {
           ),
           const SizedBox(width: 20),
         ],
-        leadingWidth: 120,
         titleTextStyle: GoogleFonts.montserrat(
           color: constBlackColor,
           fontSize: 25,
